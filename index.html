@@ -3152,35 +3152,38 @@ $('s-export').addEventListener('click', () => exportRows(csvName('search', searc
   $(id).addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(true); });
 });
 
-// Quick filter pills — toggle on/off
-document.querySelectorAll('#panel-search .qf-pill').forEach(p => {
-  p.addEventListener('click', () => {
-    const wasActive = p.classList.contains('active');
-    document.querySelectorAll('#panel-search .qf-pill').forEach(x => x.classList.remove('active'));
-    if (wasActive) {
-      // Deselect: clear and reset
-      $('s-cond').value = '';
-      STATE.search.last = [];
-      STATE.search.total = 0;
-      $('s-count').textContent = '0';
-      $('s-status-filter').style.display = 'none';
-      $('s-pag').style.display = 'none';
-      $('s-pag-top').style.display = 'none';
-      $('s-loadmore-wrap').style.display = 'none';
-      $('s-results').innerHTML = `
-        <div class="state">
-          <div class="ico">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-          </div>
-          <h3>Search cleared</h3>
-          <p>Pick another quick filter or enter your own search terms.</p>
-        </div>`;
-    } else {
-      p.classList.add('active');
-      $('s-cond').value = p.dataset.qf;
-      runSearch(true);
-    }
-  });
+// Quick filter pills — delegated handler on document so it survives any
+// re-render or timing issue. Toggle: click active pill = deselect & clear.
+document.addEventListener('click', (e) => {
+  const pill = e.target.closest('#panel-search .qf-pill[data-qf]');
+  if (!pill) return;
+  const value = String(pill.dataset.qf || '').trim();
+  if (!value) return;  // guard against undefined/empty data-qf
+  const wasActive = pill.classList.contains('active');
+  document.querySelectorAll('#panel-search .qf-pill').forEach(x => x.classList.remove('active'));
+  if (wasActive) {
+    // Deselect: clear and reset
+    $('s-cond').value = '';
+    STATE.search.last = [];
+    STATE.search.total = 0;
+    $('s-count').textContent = '0';
+    $('s-status-filter').style.display = 'none';
+    $('s-pag').style.display = 'none';
+    $('s-pag-top').style.display = 'none';
+    $('s-loadmore-wrap').style.display = 'none';
+    $('s-results').innerHTML = `
+      <div class="state">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h3>Search cleared</h3>
+        <p>Pick another quick filter or enter your own search terms.</p>
+      </div>`;
+  } else {
+    pill.classList.add('active');
+    $('s-cond').value = value;
+    runSearch(true);
+  }
 });
 
 /* ========================================================================
@@ -3845,21 +3848,24 @@ function renderPipelineCompare() {
   renderTable('p-table-cmp', cmpColumns, combined, { onRowClick: (row) => openDetail(row.nctId) });
   $('p-export').disabled = false;
 }
-document.querySelectorAll('#panel-pipeline .qf-pill').forEach(p => {
-  p.addEventListener('click', () => {
-    const wasActive = p.classList.contains('active');
-    document.querySelectorAll('#panel-pipeline .qf-pill').forEach(x => x.classList.remove('active'));
-    if (wasActive) {
-      $('p-spons').value = '';
-      $('p-results').innerHTML = `<div class="card"><div class="state">
-        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="m7 17 4-4 4 4 4-8"/></svg></div>
-        <h3>Selection cleared</h3><p>Pick another sponsor or enter your own.</p></div></div>`;
-    } else {
-      p.classList.add('active');
-      $('p-spons').value = p.dataset.spons;
-      runPipeline();
-    }
-  });
+// Delegated pipeline sponsor pill handler
+document.addEventListener('click', (e) => {
+  const pill = e.target.closest('#panel-pipeline .qf-pill[data-spons]');
+  if (!pill) return;
+  const value = String(pill.dataset.spons || '').trim();
+  if (!value) return;
+  const wasActive = pill.classList.contains('active');
+  document.querySelectorAll('#panel-pipeline .qf-pill').forEach(x => x.classList.remove('active'));
+  if (wasActive) {
+    $('p-spons').value = '';
+    $('p-results').innerHTML = `<div class="card"><div class="state">
+      <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="m7 17 4-4 4 4 4-8"/></svg></div>
+      <h3>Selection cleared</h3><p>Pick another sponsor or enter your own.</p></div></div>`;
+  } else {
+    pill.classList.add('active');
+    $('p-spons').value = value;
+    runPipeline();
+  }
 });
 
 /* ========================================================================
@@ -4058,26 +4064,25 @@ $('e-export').addEventListener('click', () => exportRows(csvName('endpoint-bench
   { label: 'Time Frame', val: r => r.timeFrame },
   { label: 'Trial Title', val: r => r.briefTitle },
 ]));
-// Quick-filter pills — toggle on/off
-function bindEndpointQF() {
-  document.querySelectorAll('[data-qfe]').forEach(p => {
-    p.addEventListener('click', () => {
-      const wasActive = p.classList.contains('active');
-      document.querySelectorAll('#panel-endpoints .qf-pill').forEach(x => x.classList.remove('active'));
-      if (wasActive) {
-        $('e-cond').value = '';
-        $('e-results').innerHTML = `<div class="card"><div class="state">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-          <h3>Selection cleared</h3><p>Pick another condition or type your own.</p></div></div>`;
-      } else {
-        $('e-cond').value = p.dataset.qfe;
-        p.classList.add('active');
-        runEndpoints();
-      }
-    });
-  });
-}
-bindEndpointQF();
+// Delegated endpoint condition pill handler (catches form pills + empty-state pills)
+document.addEventListener('click', (e) => {
+  const pill = e.target.closest('[data-qfe]');
+  if (!pill) return;
+  const value = String(pill.dataset.qfe || '').trim();
+  if (!value) return;
+  const wasActive = pill.classList.contains('active');
+  document.querySelectorAll('#panel-endpoints .qf-pill').forEach(x => x.classList.remove('active'));
+  if (wasActive) {
+    $('e-cond').value = '';
+    $('e-results').innerHTML = `<div class="card"><div class="state">
+      <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+      <h3>Selection cleared</h3><p>Pick another condition or type your own.</p></div></div>`;
+  } else {
+    $('e-cond').value = value;
+    pill.classList.add('active');
+    runEndpoints();
+  }
+});
 
 /* ========================================================================
    PANEL 4: INVESTIGATOR FINDER
