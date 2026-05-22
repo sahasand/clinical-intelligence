@@ -2001,15 +2001,15 @@ tbody tr:hover .row-arrow {
       </div>
       <div class="quick-filters">
         <span class="qf-label">Quick search</span>
-        <button class="qf-pill" data-qf="cardiac amyloidosis">Cardiac amyloidosis</button>
-        <button class="qf-pill" data-qf="breast cancer">Breast cancer</button>
-        <button class="qf-pill" data-qf="type 2 diabetes">Type 2 diabetes</button>
-        <button class="qf-pill" data-qf="alzheimer disease">Alzheimer's</button>
-        <button class="qf-pill" data-qf="heart failure">Heart failure</button>
-        <button class="qf-pill" data-qf="non-small cell lung cancer">NSCLC</button>
-        <button class="qf-pill" data-qf="multiple sclerosis">MS</button>
-        <button class="qf-pill" data-qf="obesity">Obesity</button>
-        <button class="qf-pill" data-qf="ulcerative colitis">UC</button>
+        <button type="button" class="qf-pill" data-qf="cardiac amyloidosis" onclick="qfSearchClick(this)">Cardiac amyloidosis</button>
+        <button type="button" class="qf-pill" data-qf="breast cancer" onclick="qfSearchClick(this)">Breast cancer</button>
+        <button type="button" class="qf-pill" data-qf="type 2 diabetes" onclick="qfSearchClick(this)">Type 2 diabetes</button>
+        <button type="button" class="qf-pill" data-qf="alzheimer disease" onclick="qfSearchClick(this)">Alzheimer's</button>
+        <button type="button" class="qf-pill" data-qf="heart failure" onclick="qfSearchClick(this)">Heart failure</button>
+        <button type="button" class="qf-pill" data-qf="non-small cell lung cancer" onclick="qfSearchClick(this)">NSCLC</button>
+        <button type="button" class="qf-pill" data-qf="multiple sclerosis" onclick="qfSearchClick(this)">MS</button>
+        <button type="button" class="qf-pill" data-qf="obesity" onclick="qfSearchClick(this)">Obesity</button>
+        <button type="button" class="qf-pill" data-qf="ulcerative colitis" onclick="qfSearchClick(this)">UC</button>
       </div>
     </div>
 
@@ -2079,16 +2079,16 @@ tbody tr:hover .row-arrow {
       <div class="quick-filters" style="flex-direction: column; align-items: flex-start; gap: 10px;">
         <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
           <span class="qf-label">Try</span>
-          <button class="qf-pill" data-spons="Pfizer">Pfizer</button>
-          <button class="qf-pill" data-spons="Novartis">Novartis</button>
-          <button class="qf-pill" data-spons="Moderna">Moderna</button>
-          <button class="qf-pill" data-spons="Merck">Merck</button>
-          <button class="qf-pill" data-spons="Eli Lilly">Eli Lilly</button>
-          <button class="qf-pill" data-spons="AstraZeneca">AstraZeneca</button>
-          <button class="qf-pill" data-spons="Roche">Roche</button>
-          <button class="qf-pill" data-spons="GSK">GSK</button>
-          <button class="qf-pill" data-spons="Janssen">Janssen / J&amp;J</button>
-          <button class="qf-pill" data-spons="Bristol-Myers Squibb">BMS</button>
+          <button type="button" class="qf-pill" data-spons="Pfizer" onclick="qfSponsorClick(this)">Pfizer</button>
+          <button type="button" class="qf-pill" data-spons="Novartis" onclick="qfSponsorClick(this)">Novartis</button>
+          <button type="button" class="qf-pill" data-spons="Moderna" onclick="qfSponsorClick(this)">Moderna</button>
+          <button type="button" class="qf-pill" data-spons="Merck" onclick="qfSponsorClick(this)">Merck</button>
+          <button type="button" class="qf-pill" data-spons="Eli Lilly" onclick="qfSponsorClick(this)">Eli Lilly</button>
+          <button type="button" class="qf-pill" data-spons="AstraZeneca" onclick="qfSponsorClick(this)">AstraZeneca</button>
+          <button type="button" class="qf-pill" data-spons="Roche" onclick="qfSponsorClick(this)">Roche</button>
+          <button type="button" class="qf-pill" data-spons="GSK" onclick="qfSponsorClick(this)">GSK</button>
+          <button type="button" class="qf-pill" data-spons="Janssen" onclick="qfSponsorClick(this)">Janssen / J&amp;J</button>
+          <button type="button" class="qf-pill" data-spons="Bristol-Myers Squibb" onclick="qfSponsorClick(this)">BMS</button>
         </div>
         <div class="field-hint">
           <strong style="color: var(--text-1);">Tip:</strong>
@@ -2137,11 +2137,11 @@ tbody tr:hover .row-arrow {
       </div>
       <div class="quick-filters">
         <span class="qf-label">Try</span>
-        <button class="qf-pill" data-qfe="cardiac amyloidosis">Cardiac amyloidosis</button>
-        <button class="qf-pill" data-qfe="non-small cell lung cancer">NSCLC</button>
-        <button class="qf-pill" data-qfe="atopic dermatitis">Atopic dermatitis</button>
-        <button class="qf-pill" data-qfe="type 2 diabetes">T2D</button>
-        <button class="qf-pill" data-qfe="rheumatoid arthritis">RA</button>
+        <button type="button" class="qf-pill" data-qfe="cardiac amyloidosis" onclick="qfEndpointClick(this)">Cardiac amyloidosis</button>
+        <button type="button" class="qf-pill" data-qfe="non-small cell lung cancer" onclick="qfEndpointClick(this)">NSCLC</button>
+        <button type="button" class="qf-pill" data-qfe="atopic dermatitis" onclick="qfEndpointClick(this)">Atopic dermatitis</button>
+        <button type="button" class="qf-pill" data-qfe="type 2 diabetes" onclick="qfEndpointClick(this)">T2D</button>
+        <button type="button" class="qf-pill" data-qfe="rheumatoid arthritis" onclick="qfEndpointClick(this)">RA</button>
       </div>
     </div>
 
@@ -2152,9 +2152,9 @@ tbody tr:hover .row-arrow {
           <h3>What endpoint should you use?</h3>
           <p>Pull all trials for your condition, then aggregate and rank their primary endpoints. Answers <em>"what's the standard for my indication?"</em> in seconds.</p>
           <div class="state-examples">
-            <span class="qf-pill" data-qfe="cardiac amyloidosis">Cardiac amyloidosis</span>
-            <span class="qf-pill" data-qfe="atopic dermatitis">Atopic dermatitis</span>
-            <span class="qf-pill" data-qfe="type 2 diabetes">Type 2 diabetes</span>
+            <span class="qf-pill" data-qfe="cardiac amyloidosis" onclick="qfEndpointClick(this)">Cardiac amyloidosis</span>
+            <span class="qf-pill" data-qfe="atopic dermatitis" onclick="qfEndpointClick(this)">Atopic dermatitis</span>
+            <span class="qf-pill" data-qfe="type 2 diabetes" onclick="qfEndpointClick(this)">Type 2 diabetes</span>
           </div>
         </div>
       </div>
@@ -3152,13 +3152,12 @@ $('s-export').addEventListener('click', () => exportRows(csvName('search', searc
   $(id).addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(true); });
 });
 
-// Quick filter pills — delegated handler on document so it survives any
-// re-render or timing issue. Toggle: click active pill = deselect & clear.
-document.addEventListener('click', (e) => {
-  const pill = e.target.closest('#panel-search .qf-pill[data-qf]');
-  if (!pill) return;
+// Quick filter pill handler — wired via inline onclick on each pill so it
+// fires regardless of script-load timing or any document-level interception.
+// Exposed on window so the inline onclick can find it.
+window.qfSearchClick = function(pill) {
   const value = String(pill.dataset.qf || '').trim();
-  if (!value) return;  // guard against undefined/empty data-qf
+  if (!value) return;
   const wasActive = pill.classList.contains('active');
   document.querySelectorAll('#panel-search .qf-pill').forEach(x => x.classList.remove('active'));
   if (wasActive) {
@@ -3184,7 +3183,7 @@ document.addEventListener('click', (e) => {
     $('s-cond').value = value;
     runSearch(true);
   }
-});
+};
 
 /* ========================================================================
    DETAIL MODAL
@@ -3848,10 +3847,8 @@ function renderPipelineCompare() {
   renderTable('p-table-cmp', cmpColumns, combined, { onRowClick: (row) => openDetail(row.nctId) });
   $('p-export').disabled = false;
 }
-// Delegated pipeline sponsor pill handler
-document.addEventListener('click', (e) => {
-  const pill = e.target.closest('#panel-pipeline .qf-pill[data-spons]');
-  if (!pill) return;
+// Pipeline sponsor pill — wired via inline onclick on each pill.
+window.qfSponsorClick = function(pill) {
   const value = String(pill.dataset.spons || '').trim();
   if (!value) return;
   const wasActive = pill.classList.contains('active');
@@ -3866,7 +3863,7 @@ document.addEventListener('click', (e) => {
     $('p-spons').value = value;
     runPipeline();
   }
-});
+};
 
 /* ========================================================================
    PANEL 3: ENDPOINT BENCHMARKING
@@ -4064,10 +4061,9 @@ $('e-export').addEventListener('click', () => exportRows(csvName('endpoint-bench
   { label: 'Time Frame', val: r => r.timeFrame },
   { label: 'Trial Title', val: r => r.briefTitle },
 ]));
-// Delegated endpoint condition pill handler (catches form pills + empty-state pills)
-document.addEventListener('click', (e) => {
-  const pill = e.target.closest('[data-qfe]');
-  if (!pill) return;
+// Endpoint condition pill — wired via inline onclick on each pill
+// (covers both the form pills and the empty-state example pills).
+window.qfEndpointClick = function(pill) {
   const value = String(pill.dataset.qfe || '').trim();
   if (!value) return;
   const wasActive = pill.classList.contains('active');
@@ -4082,7 +4078,7 @@ document.addEventListener('click', (e) => {
     pill.classList.add('active');
     runEndpoints();
   }
-});
+};
 
 /* ========================================================================
    PANEL 4: INVESTIGATOR FINDER
